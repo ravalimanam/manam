@@ -1,0 +1,50 @@
+// creates a FileWriter Object
+					PrintWriter writer=new PrintWriter(file);
+					// Writes the content to the file
+					writer.write("Hello");
+					writer.flush();
+					writer.close();
+
+Groovy code to read csv file:
+
+class ReadCsv {
+
+	static main(args) {
+
+		String File = "D:\\Testinput.csv";
+		String line = "";
+		String cvsSplitBy = ";";
+		String input = "";
+		Map<Integer, String> maps = new HashMap<Integer, String>();// Creating a
+		// hashmap
+
+		BufferedReader br = null;
+		try {
+			// Reading the File using BufferedReader
+			br = new BufferedReader(new FileReader(File));
+			while ((line = br.readLine()) != null) {
+				// Splitting the values by delimiter and putting the Array
+
+				String[] data = line.split(cvsSplitBy);
+				for (int i = 1; i <=data.length; i++) {
+
+					// Assinging the array value to string
+					input = data[i-1];
+					// Storing the values in Hashmap
+					maps.put(i, input);
+					System.out.println("map:" + maps);
+
+				}
+
+			}
+
+		} catch (Exception e) {
+			System.out.println("Exception:" + e.getMessage());
+		}
+	}
+
+
+
+
+}
+
